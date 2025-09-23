@@ -1,0 +1,40 @@
+<!-- Apple Touch Icon 180x180 -->
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="appleBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#334155;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="180" height="180" fill="url(#appleBg)" rx="32"/>
+  
+  <!-- Tech decorative elements -->
+  <circle cx="30" cy="30" r="3" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="150" cy="150" r="3" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="150" cy="30" r="2" fill="#8B5CF6" opacity="0.5"/>
+  <circle cx="30" cy="150" r="2" fill="#8B5CF6" opacity="0.5"/>
+  
+  <!-- Tech lines -->
+  <rect x="25" y="145" width="12" height="2" fill="#60A5FA" opacity="0.4"/>
+  <rect x="143" y="25" width="12" height="2" fill="#60A5FA" opacity="0.4"/>
+  <rect x="25" y="25" width="2" height="12" fill="#8B5CF6" opacity="0.4"/>
+  <rect x="153" y="143" width="2" height="12" fill="#8B5CF6" opacity="0.4"/>
+  
+  <!-- Main text -->
+  <text x="90" y="105" font-family="'Courier New', Monaco, monospace" font-size="32" font-weight="bold" text-anchor="middle" fill="#3B82F6" filter="url(#glow)">
+    &lt;90tun/&gt;
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="90" y="130" font-family="'Courier New', Monaco, monospace" font-size="12" text-anchor="middle" fill="#60A5FA" opacity="0.8">
+    developer
+  </text>
+</svg>

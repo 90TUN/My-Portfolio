@@ -1,0 +1,16 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" fill="url(#bgGradient)" rx="8"/>
+  <text x="32" y="38" font-family="'Courier New', Monaco, monospace" font-size="14" font-weight="bold" text-anchor="middle" fill="#3B82F6">
+    &lt;90tun/&gt;
+  </text>
+  <circle cx="10" cy="10" r="1.5" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="54" cy="54" r="1.5" fill="#60A5FA" opacity="0.6"/>
+  <rect x="8" y="52" width="4" height="1" fill="#60A5FA" opacity="0.4"/>
+  <rect x="52" y="8" width="4" height="1" fill="#60A5FA" opacity="0.4"/>
+</svg>

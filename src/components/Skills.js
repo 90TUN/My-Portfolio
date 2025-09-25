@@ -214,7 +214,7 @@ const Skills = () => {
         <div className="flex flex-col gap-12">
           {/* Technical Skills */}
           <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center" data-aos="fade-right" data-aos-delay="200">
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center" data-aos="fade-up" data-aos-delay="200">
               Technical Skills
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -244,7 +244,7 @@ const Skills = () => {
           
           {/* Soft Skills */}
           <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center" data-aos="fade-left" data-aos-delay="200">
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center" data-aos="fade-up" data-aos-delay="200">
               Soft Skills
             </h3>
             <div className="bg-gray-900 border border-gray-700 p-6 sm:p-8 md:p-10 hover:shadow-2xl hover:shadow-white/10 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="400">
@@ -252,7 +252,7 @@ const Skills = () => {
                 <div 
                   key={skill.name} 
                   className="mb-8 last:mb-0"
-                  data-aos="slide-right"
+                  data-aos="fade-up"
                   data-aos-delay={600 + (index * 150)}
                 >
                   <div className="flex justify-between items-center mb-3">
@@ -267,7 +267,7 @@ const Skills = () => {
                     <div 
                       className="h-full bg-gradient-to-r from-white to-gray-300 transition-all duration-2000 ease-out"
                       style={{ width: `${skill.progress}%` }}
-                      data-aos="slide-right"
+                      data-aos="zoom-in"
                       data-aos-delay={800 + (index * 150)}
                       data-aos-duration="1500"
                     ></div>

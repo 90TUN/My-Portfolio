@@ -15,72 +15,47 @@ const Footer = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: window.innerWidth >= 768 ? 'row' : 'column',
+          justifyContent: 'space-between',
           alignItems: 'center',
-          textAlign: 'center',
-          gap: '2rem'
+          gap: '1.5rem'
         }}>
-          {/* Brand and Copyright */}
-          <div>
+          {/* Left Side - Copyright */}
+          <div style={{
+            textAlign: window.innerWidth >= 768 ? 'left' : 'center'
+          }}>
             <div style={{
-              fontSize: 'clamp(1rem, 3vw, 1.2rem)',
+              fontSize: '1.2rem',
               fontWeight: '600',
               marginBottom: '0.5rem'
             }}>
               90TUN
             </div>
             <div style={{
-              fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
-              color: '#ccc',
-              lineHeight: '1.4'
+              fontSize: '0.9rem',
+              color: '#ccc'
             }}>
               © 2025 Akande Ayomidotun. All rights reserved.
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Right Side - Back to Top */}
           <div style={{
             display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: 'clamp(1rem, 3vw, 2rem)',
-            fontSize: 'clamp(0.8rem, 2vw, 0.9rem)'
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.5rem'
           }}>
-            {[
-              { name: 'Home', href: '#home' },
-              { name: 'About', href: '#about' },
-              { name: 'Projects', href: '#projects' },
-              { name: 'Contact', href: '#contact' }
-            ].map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                style={{
-                  color: '#ccc',
-                  textDecoration: 'none',
-                  transition: 'color 0.3s ease',
-                  padding: '0.5rem'
-                }}
-                onMouseEnter={(e) => e.target.style.color = '#fff'}
-                onMouseLeave={(e) => e.target.style.color = '#ccc'}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-
-          {/* Back to Top */}
-          <div>
             <button
               onClick={scrollToTop}
               style={{
                 background: 'transparent',
                 border: '1px solid #666',
                 color: '#ccc',
-                padding: 'clamp(0.5rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem)',
+                padding: '0.5rem 1rem',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
-                fontSize: 'clamp(0.8rem, 2vw, 0.9rem)'
+                fontSize: '0.9rem'
               }}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = '#fff';
@@ -106,9 +81,8 @@ const Footer = () => {
           textAlign: 'center'
         }}>
           <div style={{
-            fontSize: 'clamp(0.7rem, 2vw, 0.8rem)',
-            color: '#999',
-            lineHeight: '1.4'
+            fontSize: '0.8rem',
+            color: '#999'
           }}>
             Built with React & styled with passion for clean design
           </div>

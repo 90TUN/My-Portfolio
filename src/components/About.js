@@ -30,7 +30,7 @@ const About = () => {
           {/* Left Column - Content */}
           <div className="space-y-8">
             {/* Introduction */}
-            <div data-aos="fade-right" data-aos-delay="200">
+            <div data-aos="fade-up" data-aos-delay="200">
               <div className="mb-6">
                 <h3 className="text-3xl font-bold text-black mb-3 relative">
                   Who I Am
@@ -53,7 +53,7 @@ const About = () => {
             </div>
 
             {/* Highlights */}
-            <div data-aos="fade-right" data-aos-delay="400">
+            <div data-aos="fade-up" data-aos-delay="400">
               <div className="mb-6">
                 <h3 className="text-3xl font-bold text-black mb-3 relative">
                   What I Bring
@@ -101,7 +101,7 @@ const About = () => {
           </div>
 
           {/* Right Column - Stats */}
-          <div className="lg:sticky lg:top-32" data-aos="fade-left" data-aos-delay="300">
+          <div className="lg:sticky lg:top-32" data-aos="fade-up" data-aos-delay="300">
             <div className="bg-gray-50 p-4 sm:p-6 lg:p-8 border border-gray-200">
               <h3 className="text-lg sm:text-xl font-semibold text-black mb-6 sm:mb-8 text-center">
                 By the Numbers

@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Contact = () => {
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    
+    // Create FormData object
+    const formData = new FormData(form);
+    
+    // Submit to FormSubmit
+    fetch(form.action, {
+      method: 'POST',
+      body: formData
+    })
+    .then(() => {
+      setShowSuccess(true);
+      form.reset();
+      // Hide success message after 5 seconds
+      setTimeout(() => setShowSuccess(false), 5000);
+    })
+    .catch(() => {
+      alert('There was an error sending your message. Please try again.');
+    });
+  };
+
   return (
     <section id="contact" className="min-h-screen py-12 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 flex items-center">
       <div className="max-w-6xl mx-auto w-full">
@@ -20,7 +45,7 @@ const Contact = () => {
         {/* Main Content - Two Column Layout */}
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start">
           {/* Contact Form */}
-          <div className="bg-white border border-gray-200 p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow duration-300" data-aos="fade-right" data-aos-delay="200">
+          <div className="bg-white border border-gray-200 p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
             <div className="mb-6 sm:mb-8">
               <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2">
                 Send a Message
@@ -29,11 +54,23 @@ const Contact = () => {
                 Fill out the form below and I'll get back to you as soon as possible.
               </p>
             </div>
+
+            {/* Success Message */}
+            {showSuccess && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-800 text-sm sm:text-base animate-fade-in">
+                <div className="flex items-center">
+                  <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="font-medium">Message sent successfully!</span>
+                </div>
+                <p className="mt-1 ml-7">Thank you for reaching out. I'll get back to you soon.</p>
+              </div>
+            )}
             
-            <form action="https://formsubmit.co/akandeayomidotun444@gmail.com" method="POST" className="space-y-6">
+            <form action="https://formsubmit.co/akandeayomidotun444@gmail.com" method="POST" className="space-y-6" onSubmit={handleSubmit}>
               {/* Formsubmit configuration */}
               <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value={window.location.href} />
               <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission" />
               
               <div className="grid sm:grid-cols-2 gap-4">
@@ -93,7 +130,7 @@ const Contact = () => {
           {/* Contact Info & Details */}
           <div className="space-y-6 sm:space-y-8">
             {/* Contact Information */}
-            <div className="bg-white border border-gray-200 p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow duration-300" data-aos="fade-left" data-aos-delay="400">
+            <div className="bg-white border border-gray-200 p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="400">
               <h3 className="text-xl sm:text-2xl font-semibold text-black mb-4 sm:mb-6">
                 Let's Connect
               </h3>
@@ -136,7 +173,7 @@ const Contact = () => {
             </div>
             
             {/* Social Links */}
-            <div className="bg-white border border-gray-200 p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow duration-300" data-aos="fade-left" data-aos-delay="600">
+            <div className="bg-white border border-gray-200 p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="600">
               <h4 className="text-lg sm:text-xl font-semibold text-black mb-4">
                 Follow My Work
               </h4>
@@ -152,23 +189,13 @@ const Contact = () => {
                 </a>
                 
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/ayomidotun-akande-109160231"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 border border-gray-200 hover:border-black hover:bg-black text-black hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                   title="LinkedIn"
                 >
                   <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
-                </a>
-                
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 border border-gray-200 hover:border-black hover:bg-black text-black hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  title="Twitter"
-                >
-                  <FaTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
                 </a>
               </div>
             </div>

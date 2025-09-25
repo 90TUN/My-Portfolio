@@ -60,7 +60,7 @@ const Navigation = () => {
     <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="text-2xl font-bold text-black">
+          <div className="text-lg sm:text-xl md:text-2xl font-bold text-black">
             &lt;90TUN/&gt;
           </div>
           

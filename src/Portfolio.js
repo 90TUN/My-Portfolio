@@ -124,16 +124,20 @@ const Portfolio = () => {
           )}
         </button>
 
-        {/* Popup Menu */}
+        {/* Popup Menu - Quarter Circle Arc */}
         {showMusicMenu && (
-          <div className="absolute bottom-16 sm:bottom-20 right-0 flex flex-col space-y-3 sm:space-y-4 animate-fade-in">
-            {/* Play/Pause Button */}
+          <div className="absolute">
+            {/* Play/Pause Button - 0 degrees (directly left) */}
             <button
               onClick={() => handleMusicAction('toggle')}
-              className="w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110"
+              className="absolute w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110 animate-arc-0"
               aria-label={isPlaying ? 'Pause music' : 'Play music'}
               title={isPlaying ? 'Pause Music' : 'Play Music'}
-              style={{ touchAction: 'manipulation' }}
+              style={{ 
+                touchAction: 'manipulation',
+                right: window.innerWidth >= 640 ? '20px' : '18px',
+                bottom: '0px'
+              }}
             >
               {isPlaying ? (
                 <FaPause className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
@@ -142,24 +146,32 @@ const Portfolio = () => {
               )}
             </button>
 
-            {/* Restart Button */}
+            {/* Restart Button - 45 degrees (diagonal up-left) */}
             <button
               onClick={() => handleMusicAction('restart')}
-              className="w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110"
+              className="absolute w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110 animate-arc-45"
               aria-label="Restart music"
               title="Restart Music"
-              style={{ touchAction: 'manipulation' }}
+              style={{ 
+                touchAction: 'manipulation',
+                right: window.innerWidth >= 640 ? '0px' : '-1px',
+                bottom: window.innerWidth >= 640 ? '52px' : '46px'
+              }}
             >
               <FaRedo className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
             </button>
 
-            {/* Close Button */}
+            {/* Close Button - 90 degrees (directly above) */}
             <button
               onClick={() => handleMusicAction('close')}
-              className="w-10 h-10 sm:w-12 sm:h-12 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110"
+              className="absolute w-10 h-10 sm:w-12 sm:h-12 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110 animate-arc-90"
               aria-label="Close menu"
               title="Close Menu"
-              style={{ touchAction: 'manipulation' }}
+              style={{ 
+                touchAction: 'manipulation',
+                right: window.innerWidth >= 640 ? '-50px' : '-44px',
+                bottom: window.innerWidth >= 640 ? '80px' : '72px'
+              }}
             >
               <FaTimes className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
             </button>

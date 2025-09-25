@@ -23,10 +23,10 @@ const Experience = () => {
         {/* Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200" data-aos="slide-down" data-aos-duration="1500"></div>
+          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200" data-aos="fade-in" data-aos-delay="100" data-aos-offset="300"></div>
 
           {experience.map((exp, index) => (
-            <div key={index} className="relative mb-8 last:mb-0" data-aos="fade-left" data-aos-delay={200 + (index * 150)}>
+            <div key={index} className="relative mb-8 last:mb-0" data-aos="fade-up" data-aos-delay={200 + (index * 150)}>
               {/* Timeline Dot */}
               <div className={`
                 absolute left-6 top-4 w-3 h-3 rounded-full border-2 border-black -translate-x-1/2 z-10

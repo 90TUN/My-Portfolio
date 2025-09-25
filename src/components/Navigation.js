@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,15 +57,16 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-200">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            &lt;90tun/&gt;
+          <div className="text-2xl font-bold text-black">
+            &lt;90TUN/&gt;
           </div>
           
+          {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="flex items-center space-x-8">
               {navItems.map((item) => (
                 <a 
                   key={item.name} 
@@ -77,11 +77,13 @@ const Navigation = () => {
                       handleNavClick(item.href, 'home');
                     }
                   }}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    activeSection === item.name.toLowerCase()
-                      ? 'text-blue-400 bg-blue-400/10 border border-blue-400/20'
-                      : 'text-gray-300 hover:text-blue-400'
-                  }`}
+                  className={`
+                    py-2 text-sm font-medium transition-all duration-300 no-underline border-b-2
+                    ${activeSection === item.name.toLowerCase() 
+                      ? 'text-black border-black' 
+                      : 'text-gray-600 border-transparent hover:text-black'
+                    }
+                  `}
                 >
                   {item.name}
                 </a>
@@ -89,42 +91,69 @@ const Navigation = () => {
             </div>
           </div>
 
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2">
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)} 
+              className="p-2 hover:bg-gray-100 transition-colors duration-300 focus:outline-none"
+            >
+              <div className="w-6 h-6 flex flex-col justify-center items-center">
+                <div 
+                  className={`
+                    w-5 h-0.5 bg-black mb-1 transition-all duration-300
+                    ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}
+                  `}
+                ></div>
+                <div 
+                  className={`
+                    w-5 h-0.5 bg-black mb-1 transition-all duration-300
+                    ${isMenuOpen ? 'opacity-0' : 'opacity-100'}
+                  `}
+                ></div>
+                <div 
+                  className={`
+                    w-5 h-0.5 bg-black transition-all duration-300
+                    ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}
+                  `}
+                ></div>
+              </div>
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-800/95 backdrop-blur-md">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => {
-                  if (item.name.toLowerCase() === 'home') {
-                    e.preventDefault();
-                    handleNavClick(item.href, 'home');
-                  } else {
-                    setIsMenuOpen(false);
-                  }
-                }}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  activeSection === item.name.toLowerCase()
-                    ? 'text-blue-400 bg-blue-400/10 border border-blue-400/20'
-                    : 'text-gray-300 hover:text-blue-400'
-                }`}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
+      <div className={`
+        md:hidden bg-white border-t border-gray-200 transition-all duration-300 overflow-hidden
+        ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
+      `}>
+        <div className="px-4 py-2">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => {
+                if (item.name.toLowerCase() === 'home') {
+                  e.preventDefault();
+                  handleNavClick(item.href, 'home');
+                } else {
+                  setIsMenuOpen(false);
+                }
+              }}
+              className={`
+                block py-3 text-base font-medium border-b border-gray-100 last:border-b-0 
+                transition-colors duration-300 no-underline
+                ${activeSection === item.name.toLowerCase() 
+                  ? 'text-black' 
+                  : 'text-gray-600 hover:text-black'
+                }
+              `}
+            >
+              {item.name}
+            </a>
+          ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 };

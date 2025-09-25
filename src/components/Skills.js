@@ -1,19 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { 
+  FaReact, 
+  FaJs, 
+  FaHtml5, 
+  FaCss3Alt, 
+  FaBootstrap, 
+  FaWordpress, 
+  FaDatabase,
+  FaFigma 
+} from 'react-icons/fa';
+import { SiTailwindcss } from 'react-icons/si';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const skillsRef = useRef(null);
 
-  const skills = [
-    { name: 'React.js', icon: '⚛️' },
-    { name: 'JavaScript', icon: '📜' },
-    { name: 'Tailwind CSS', icon: '🎨' },
-    { name: 'HTML5', icon: '🌐' },
-    { name: 'CSS3', icon: '🎨' },
-    { name: 'Bootstrap', icon: '📦' },
-    { name: 'WordPress', icon: '📝' },
-    { name: 'MySQL', icon: '🛠️' },
-    { name: 'Figma', icon: '✨' }
+  const technicalSkills = [
+    { name: 'React.js', icon: FaReact },
+    { name: 'JavaScript', icon: FaJs },
+    { name: 'Tailwind CSS', icon: SiTailwindcss },
+    { name: 'HTML5', icon: FaHtml5 },
+    { name: 'CSS3', icon: FaCss3Alt },
+    { name: 'Bootstrap', icon: FaBootstrap },
+    { name: 'WordPress', icon: FaWordpress },
+    { name: 'MySQL', icon: FaDatabase },
+    { name: 'Figma', icon: FaFigma }
   ];
 
   const softSkills = [
@@ -48,150 +59,239 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" className="min-h-screen flex items-center py-20 bg-black relative z-10 overflow-hidden">
-      {/* Hacking Matrix Background Animation */}
+    <section id="skills" className="min-h-screen py-24 px-4 bg-black flex items-center relative overflow-hidden">
+      {/* Animated White Tech Patterns */}
       <div className="absolute inset-0 z-0">
-        {/* Matrix Rain Effect */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-30">
-          {/* Vertical Code Streams */}
-          <div className="absolute top-0 left-10 text-green-400 text-xs font-mono animate-pulse">
-            <div className="animate-bounce">01100101</div>
-            <div className="animate-bounce delay-75">11010011</div>
-            <div className="animate-bounce delay-150">00110101</div>
-          </div>
-          <div className="absolute top-20 right-20 text-green-500 text-xs font-mono animate-pulse delay-100">
-            <div className="animate-bounce delay-200">function()</div>
-            <div className="animate-bounce delay-300">var x = 1;</div>
-            <div className="animate-bounce delay-400">return x;</div>
-          </div>
-          <div className="absolute top-40 left-1/3 text-green-300 text-xs font-mono animate-pulse delay-200">
-            <div className="animate-bounce delay-500">console.log</div>
-            <div className="animate-bounce delay-600">array.map</div>
-            <div className="animate-bounce delay-700">async/await</div>
-          </div>
-          <div className="absolute bottom-40 right-1/3 text-green-400 text-xs font-mono animate-pulse delay-300">
-            <div className="animate-bounce delay-100">&lt;div&gt;</div>
-            <div className="animate-bounce delay-200">className=</div>
-            <div className="animate-bounce delay-300">&lt;/div&gt;</div>
-          </div>
-          <div className="absolute top-1/2 left-1/4 text-green-500 text-xs font-mono animate-pulse delay-400">
-            <div className="animate-bounce delay-800">npm install</div>
-            <div className="animate-bounce delay-900">git commit</div>
-            <div className="animate-bounce delay-1000">git push</div>
-          </div>
-          <div className="absolute bottom-20 left-20 text-green-300 text-xs font-mono animate-pulse delay-500">
-            <div className="animate-bounce delay-300">SELECT *</div>
-            <div className="animate-bounce delay-400">FROM users</div>
-            <div className="animate-bounce delay-500">WHERE id=1</div>
+        {/* Floating Tech Elements */}
+        <div className="absolute top-20 left-10 w-2 h-2 bg-white opacity-10 animate-pulse"></div>
+        <div className="absolute top-32 right-16 w-1 h-1 bg-gray-300 opacity-15 animate-bounce" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-64 left-1/4 w-1.5 h-1.5 bg-white opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-40 right-1/3 w-2 h-2 bg-gray-200 opacity-12 animate-bounce" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-48 right-20 w-1 h-1 bg-white opacity-25 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Additional Floating Elements */}
+        <div className="absolute top-16 left-1/3 w-3 h-3 bg-gray-100 opacity-8 animate-bounce" style={{ animationDelay: '2.8s' }}></div>
+        <div className="absolute top-72 left-16 w-1.5 h-1.5 bg-white opacity-18 animate-pulse" style={{ animationDelay: '3.2s' }}></div>
+        <div className="absolute bottom-64 left-1/2 w-2 h-2 bg-gray-300 opacity-15 animate-bounce" style={{ animationDelay: '1.8s' }}></div>
+        <div className="absolute top-40 left-3/4 w-1 h-1 bg-white opacity-22 animate-pulse" style={{ animationDelay: '2.4s' }}></div>
+        <div className="absolute bottom-20 right-16 w-2.5 h-2.5 bg-gray-200 opacity-10 animate-bounce" style={{ animationDelay: '3.6s' }}></div>
+        
+        {/* Tech Circuit Lines */}
+        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          {/* Horizontal Circuit Lines */}
+          <path
+            d="M50 150 L200 150 L200 200 L350 200"
+            stroke="white"
+            strokeWidth="1"
+            fill="none"
+            opacity="0.1"
+            className="animate-pulse"
+          />
+          <circle cx="200" cy="150" r="3" fill="white" opacity="0.15" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <circle cx="200" cy="200" r="2" fill="white" opacity="0.12" className="animate-pulse" style={{ animationDelay: '1s' }} />
+          
+          {/* Vertical Tech Lines */}
+          <path
+            d="M150 80 L150 180 L200 180 L200 250"
+            stroke="white"
+            strokeWidth="0.8"
+            fill="none"
+            opacity="0.08"
+            className="animate-pulse"
+            style={{ animationDelay: '1.5s' }}
+          />
+          <circle cx="150" cy="180" r="2.5" fill="white" opacity="0.1" className="animate-pulse" style={{ animationDelay: '2s' }} />
+          
+          {/* Diagonal Connection Lines */}
+          <path
+            d="M400 120 L500 120 L500 180 L600 180"
+            stroke="white"
+            strokeWidth="1"
+            fill="none"
+            opacity="0.12"
+            className="animate-pulse"
+            style={{ animationDelay: '2.5s' }}
+          />
+          <circle cx="500" cy="120" r="2" fill="white" opacity="0.15" className="animate-pulse" style={{ animationDelay: '1.2s' }} />
+          <circle cx="500" cy="180" r="3" fill="white" opacity="0.1" className="animate-pulse" style={{ animationDelay: '3s' }} />
+          
+          {/* Complex Circuit Junction */}
+          <g className="animate-pulse" style={{ animationDelay: '1.8s' }}>
+            <path d="M300 300 L350 300 L350 340 L400 340" stroke="white" strokeWidth="0.8" fill="none" opacity="0.1" />
+            <path d="M325 280 L325 320" stroke="white" strokeWidth="0.8" fill="none" opacity="0.1" />
+            <circle cx="325" cy="300" r="4" fill="none" stroke="white" strokeWidth="1" opacity="0.08" />
+            <circle cx="350" cy="300" r="2" fill="white" opacity="0.12" />
+            <circle cx="350" cy="340" r="2" fill="white" opacity="0.15" />
+          </g>
+          
+          {/* Data Flow Lines */}
+          <path
+            d="M80 400 L180 350 L280 400 L380 350"
+            stroke="white"
+            strokeWidth="0.5"
+            fill="none"
+            opacity="0.06"
+            className="animate-pulse"
+            style={{ animationDelay: '4s' }}
+          />
+          
+          <path
+            d="M500 400 L420 320 L340 380 L260 300"
+            stroke="white"
+            strokeWidth="0.5"
+            fill="none"
+            opacity="0.08"
+            className="animate-pulse"
+            style={{ animationDelay: '2.7s' }}
+          />
+        </svg>
+        
+        {/* Floating Code Elements */}
+        <div className="absolute top-24 right-32 opacity-10">
+          <div className="text-xs font-mono text-white animate-pulse" style={{ animationDelay: '1.8s' }}>
+            {'</>'}
           </div>
         </div>
         
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        
-        {/* Animated Tech Lines */}
-        <div className="absolute top-20 left-10 w-32 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-pulse delay-75"></div>
-        <div className="absolute bottom-60 left-20 w-40 h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent animate-pulse delay-150"></div>
-        <div className="absolute bottom-40 right-10 w-28 h-px bg-gradient-to-r from-transparent via-blue-600 to-transparent animate-pulse delay-300"></div>
-        
-        {/* Vertical Tech Lines */}
-        <div className="absolute top-32 left-32 w-px h-20 bg-gradient-to-b from-transparent via-blue-400 to-transparent animate-pulse delay-100"></div>
-        <div className="absolute top-48 right-40 w-px h-16 bg-gradient-to-b from-transparent via-blue-500 to-transparent animate-pulse delay-200"></div>
-        <div className="absolute bottom-52 left-40 w-px h-24 bg-gradient-to-b from-transparent via-blue-300 to-transparent animate-pulse delay-250"></div>
-        
-        {/* Small Tech Dots */}
-        <div className="absolute top-24 left-20 w-1 h-1 bg-blue-400 rounded-full animate-ping"></div>
-        <div className="absolute top-36 right-32 w-1 h-1 bg-blue-500 rounded-full animate-ping delay-75"></div>
-        <div className="absolute bottom-48 left-16 w-1 h-1 bg-blue-300 rounded-full animate-ping delay-150"></div>
-        <div className="absolute bottom-32 right-24 w-1 h-1 bg-blue-600 rounded-full animate-ping delay-300"></div>
-        
-        {/* Corner Tech Elements */}
-        <div className="absolute top-16 left-16">
-          <div className="w-8 h-8 border-l-2 border-t-2 border-blue-400 opacity-60"></div>
-        </div>
-        <div className="absolute top-16 right-16">
-          <div className="w-8 h-8 border-r-2 border-t-2 border-blue-500 opacity-60"></div>
-        </div>
-        <div className="absolute bottom-16 left-16">
-          <div className="w-8 h-8 border-l-2 border-b-2 border-blue-300 opacity-60"></div>
-        </div>
-        <div className="absolute bottom-16 right-16">
-          <div className="w-8 h-8 border-r-2 border-b-2 border-blue-600 opacity-60"></div>
-        </div>
-        
-        {/* Circuit-like patterns */}
-        <div className="absolute top-1/3 left-8">
-          <div className="flex items-center space-x-1">
-            <div className="w-2 h-2 bg-green-400 rounded-full opacity-40 animate-ping"></div>
-            <div className="w-8 h-px bg-green-400 opacity-40"></div>
-            <div className="w-1 h-1 bg-green-500 rounded-full opacity-40 animate-ping delay-100"></div>
+        <div className="absolute bottom-32 left-24 opacity-8">
+          <div className="text-xs font-mono text-gray-200 animate-pulse" style={{ animationDelay: '3.2s' }}>
+            {'{API}'}
           </div>
         </div>
-        <div className="absolute top-2/3 right-12">
-          <div className="flex items-center space-x-1">
-            <div className="w-1 h-1 bg-green-300 rounded-full opacity-40 animate-ping delay-200"></div>
-            <div className="w-6 h-px bg-green-300 opacity-40"></div>
-            <div className="w-2 h-2 bg-green-500 rounded-full opacity-40 animate-ping delay-300"></div>
+        
+        <div className="absolute top-1/3 right-12 opacity-12">
+          <div className="text-xs font-mono text-white animate-pulse" style={{ animationDelay: '2.4s' }}>
+            {'React'}
           </div>
         </div>
-
-        {/* Hacking Terminal Boxes */}
-        <div className="absolute top-10 right-10 bg-black/50 border border-green-500/30 rounded p-1 text-xs font-mono text-green-400 opacity-60 animate-pulse">
-          <div>&gt; skills.exe</div>
-          <div>&gt; loading...</div>
-        </div>
-        <div className="absolute bottom-10 left-10 bg-black/50 border border-green-500/30 rounded p-1 text-xs font-mono text-green-400 opacity-60 animate-pulse delay-200">
-          <div>$ npm run dev</div>
-          <div>⚡ ready</div>
+        
+        <div className="absolute top-16 left-20 opacity-15">
+          <div className="text-xs font-mono text-gray-100 animate-pulse" style={{ animationDelay: '4.1s' }}>
+            {'JS'}
+          </div>
         </div>
         
-        {/* Floating Code Snippets */}
-        <div className="absolute top-1/4 right-1/4 text-green-400/40 text-xs font-mono animate-bounce delay-500">
-          {'{ skill: "React" }'}
+        <div className="absolute bottom-24 right-20 opacity-10">
+          <div className="text-xs font-mono text-white animate-pulse" style={{ animationDelay: '1.3s' }}>
+            {'CSS'}
+          </div>
         </div>
-        <div className="absolute bottom-1/4 left-1/4 text-green-500/40 text-xs font-mono animate-bounce delay-700">
-          {'await loadSkills()'}
+        
+        {/* Binary Streams */}
+        <div className="absolute top-60 left-12 opacity-8">
+          <div className="text-xs font-mono text-gray-300 animate-pulse" style={{ animationDelay: '3.7s' }}>
+            {'101'}
+          </div>
+        </div>
+        
+        <div className="absolute bottom-16 left-1/3 opacity-12">
+          <div className="text-xs font-mono text-white animate-pulse" style={{ animationDelay: '2.1s' }}>
+            {'010'}
+          </div>
+        </div>
+        
+        {/* Tech Icons */}
+        <div className="absolute top-36 right-1/3 opacity-15">
+          <div className="text-sm text-white animate-pulse" style={{ animationDelay: '1.6s' }}>
+            {'⚡'}
+          </div>
+        </div>
+        
+        <div className="absolute bottom-40 left-1/4 opacity-10">
+          <div className="text-sm text-gray-200 animate-pulse" style={{ animationDelay: '0.9s' }}>
+            {'⚙️'}
+          </div>
+        </div>
+        
+        {/* Network Nodes */}
+        <div className="absolute top-20 left-1/2 opacity-12">
+          <div className="w-4 h-4 border border-white rounded-full animate-pulse" style={{ animationDelay: '4.3s' }}></div>
+        </div>
+        
+        <div className="absolute bottom-28 right-1/2 opacity-15">
+          <div className="w-3 h-3 border border-gray-200 rounded-full animate-pulse" style={{ animationDelay: '1.1s' }}></div>
+        </div>
+        
+        {/* Scanning Effect */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-5 animate-pulse" 
+               style={{ top: '25%', animationDelay: '5s', animationDuration: '4s' }}></div>
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-8 animate-pulse" 
+               style={{ top: '70%', animationDelay: '6.2s', animationDuration: '5s' }}></div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          Skills & Expertise
-        </h2>
+      <div className="max-w-5xl mx-auto relative z-10">
+        {/* Section Title */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            Skills & Expertise
+          </h2>
+          <div className="w-16 h-1 bg-white mx-auto"></div>
+          <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
+            A comprehensive toolkit of modern technologies and essential soft skills
+          </p>
+        </div>
         
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="flex flex-col gap-12">
           {/* Technical Skills */}
           <div>
-            <h3 className="text-2xl font-bold mb-8 text-blue-400">Technical Skills</h3>
-            <div className="grid grid-cols-3 gap-4">
-              {skills.map((skill) => (
-                <div key={skill.name} className="bg-gray-800 border border-gray-700 rounded-xl p-4 text-center hover:bg-gray-700 hover:border-blue-500 hover:scale-105 transition-all duration-300 group">
-                  <div className="text-3xl mb-2 group-hover:animate-bounce">{skill.icon}</div>
-                  <div className="text-sm font-medium text-gray-200">{skill.name}</div>
-                </div>
-              ))}
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center">
+              Technical Skills
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {technicalSkills.map((skill, index) => {
+                const IconComponent = skill.icon;
+                return (
+                  <div 
+                    key={skill.name} 
+                    className="bg-gray-900 border border-gray-700 py-6 px-3 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10 hover:border-white group cursor-pointer select-none"
+                    onClick={() => {
+                      console.log(`Clicked on ${skill.name}`);
+                    }}
+                  >
+                    <div className="text-4xl mb-4 text-gray-400 group-hover:text-white transition-all duration-300 group-hover:scale-125 group-hover:rotate-12 flex justify-center">
+                      <IconComponent />
+                    </div>
+                    <div className="text-xs sm:text-sm font-medium text-gray-200 group-hover:text-white break-words transition-colors duration-300">
+                      {skill.name}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
           
           {/* Soft Skills */}
           <div ref={skillsRef}>
-            <h3 className="text-2xl font-bold mb-8 text-purple-400">Soft Skills</h3>
-            <div className="space-y-6">
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center">
+              Soft Skills
+            </h3>
+            <div className="bg-gray-900 border border-gray-700 p-6 sm:p-8 md:p-10 hover:shadow-2xl hover:shadow-white/10 transition-shadow duration-300">
               {softSkills.map((skill, index) => (
-                <div key={skill.name}>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium text-gray-200">{skill.name}</span>
-                    <span className="text-sm text-gray-400">{skill.progress}%</span>
+                <div key={skill.name} className="mb-8 last:mb-0">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-sm sm:text-base font-medium text-white">
+                      {skill.name}
+                    </span>
+                    <span className="text-xs sm:text-sm text-gray-400 font-mono">
+                      {skill.progress}%
+                    </span>
                   </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2">
+                  <div className="w-full h-3 bg-gray-800 border border-gray-600 overflow-hidden">
                     <div 
-                      className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out"
+                      className="h-full bg-gradient-to-r from-white to-gray-300 transition-all duration-1000 ease-out"
                       style={{ 
                         width: isVisible ? `${skill.progress}%` : '0%',
                         transitionDelay: isVisible ? `${index * 200}ms` : '0ms'
                       }}
                     ></div>
+                  </div>
+                  <div className="mt-2 text-xs text-gray-500">
+                    {skill.name === 'Problem Solving' && 'Analytical thinking and creative solutions'}
+                    {skill.name === 'Critical Thinking' && 'Logical analysis and decision making'}
+                    {skill.name === 'Teamwork' && 'Collaborative development and communication'}
+                    {skill.name === 'Communication' && 'Clear documentation and client interaction'}
                   </div>
                 </div>
               ))}

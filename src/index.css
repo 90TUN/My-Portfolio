@@ -6,17 +6,49 @@
   html {
     scroll-behavior: smooth;
   }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
 }
 
-@layer utilities {
-  .animate-spin-slow {
-    animation: spin 8s linear infinite;
+@layer components {
+  .section-padding {
+    @apply py-20 px-4 md:px-8 lg:px-16;
   }
   
-  .bg-grid-pattern {
-    background-image: 
-      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
+  .container-max {
+    @apply max-w-6xl mx-auto;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent;
+  }
+  
+  .border-minimal {
+    @apply border border-gray-200;
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+  
+  .clean-card {
+    @apply bg-white border-minimal rounded-lg p-6 shadow-sm;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

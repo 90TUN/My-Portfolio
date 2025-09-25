@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { FaHeadphones, FaPlay, FaPause, FaRedo, FaTimes } from 'react-icons/fa';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,15 +10,73 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 const Portfolio = () => {
-  return (
-    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
-      {/* Animated Background */}
-      <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-black opacity-90 z-0">
-        <div className="absolute inset-0 opacity-30" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}></div>
-      </div>
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showMusicMenu, setShowMusicMenu] = useState(false);
+  const audioRef = useRef(null);
 
+  useEffect(() => {
+    // Initialize audio element
+    audioRef.current = new Audio('/audio/site-music.mp3');
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.3; // Set volume to 30%
+    
+    // Cleanup on unmount
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play().catch(error => {
+          console.log('Audio play failed:', error);
+        });
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const restartMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      if (!isPlaying) {
+        audioRef.current.play().catch(error => {
+          console.log('Audio play failed:', error);
+        });
+        setIsPlaying(true);
+      }
+    }
+    setShowMusicMenu(false);
+  };
+
+  const handleMainMusicClick = () => {
+    setShowMusicMenu(!showMusicMenu);
+  };
+
+  const handleBackgroundClick = () => {
+    if (showMusicMenu) {
+      setShowMusicMenu(false);
+    }
+  };
+
+  const handleMusicAction = (action) => {
+    if (action === 'toggle') {
+      toggleMusic();
+    } else if (action === 'restart') {
+      restartMusic();
+    } else if (action === 'close') {
+      setShowMusicMenu(false);
+    }
+  };
+  return (
+    <div className="min-h-screen bg-white text-black relative">
       <Navigation />
       <Hero />
       <About />
@@ -26,6 +85,79 @@ const Portfolio = () => {
       <Experience />
       <Contact />
       <Footer />
+      
+      {/* Background Blur Overlay */}
+      {showMusicMenu && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm z-[9998]"
+          onClick={handleBackgroundClick}
+        />
+      )}
+      
+      {/* Floating Music Player */}
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999]">
+        {/* Main Music Button */}
+        <button
+          onClick={handleMainMusicClick}
+          className="w-12 h-12 sm:w-14 sm:h-14 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110 relative"
+          aria-label="Music Player Menu"
+          title="Music Player"
+          style={{ touchAction: 'manipulation' }}
+        >
+          <FaHeadphones className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform duration-300" />
+          
+          {/* Animated Sound Waves (when playing) */}
+          {isPlaying && (
+            <div className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 flex space-x-0.5">
+              <div className="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-white rounded-full animate-pulse"></div>
+              <div className="w-0.5 h-1 sm:w-1 sm:h-1.5 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+              <div className="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+            </div>
+          )}
+        </button>
+
+        {/* Popup Menu */}
+        {showMusicMenu && (
+          <div className="absolute bottom-16 sm:bottom-20 right-0 flex flex-col space-y-3 sm:space-y-4 animate-fade-in">
+            {/* Play/Pause Button */}
+            <button
+              onClick={() => handleMusicAction('toggle')}
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110"
+              aria-label={isPlaying ? 'Pause music' : 'Play music'}
+              title={isPlaying ? 'Pause Music' : 'Play Music'}
+              style={{ touchAction: 'manipulation' }}
+            >
+              {isPlaying ? (
+                <FaPause className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
+              ) : (
+                <FaPlay className="w-4 h-4 sm:w-5 sm:h-5 ml-0.5 group-hover:scale-110 transition-transform duration-300" />
+              )}
+            </button>
+
+            {/* Restart Button */}
+            <button
+              onClick={() => handleMusicAction('restart')}
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110"
+              aria-label="Restart music"
+              title="Restart Music"
+              style={{ touchAction: 'manipulation' }}
+            >
+              <FaRedo className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
+            </button>
+
+            {/* Close Button */}
+            <button
+              onClick={() => handleMusicAction('close')}
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group active:scale-95 sm:hover:scale-110"
+              aria-label="Close menu"
+              title="Close Menu"
+              style={{ touchAction: 'manipulation' }}
+            >
+              <FaTimes className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

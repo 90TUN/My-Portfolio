@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaHeadphones, FaPlay, FaPause, FaRedo, FaTimes } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -15,12 +17,18 @@ const Portfolio = () => {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    // Initialize audio element
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+      easing: 'ease-out-cubic'
+    });
+
     audioRef.current = new Audio('/audio/site-music.mp3');
     audioRef.current.loop = true;
-    audioRef.current.volume = 0.3; // Set volume to 30%
-    
-    // Cleanup on unmount
+    audioRef.current.volume = 0.3; // Set volume to 30% 
+
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();

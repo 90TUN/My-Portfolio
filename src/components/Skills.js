@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { 
   FaReact, 
   FaJs, 
@@ -9,11 +9,10 @@ import {
   FaDatabase,
   FaFigma 
 } from 'react-icons/fa';
+import { SiCanva } from 'react-icons/si';
 import { SiTailwindcss } from 'react-icons/si';
 
 const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const skillsRef = useRef(null);
 
   const technicalSkills = [
     { name: 'React.js', icon: FaReact },
@@ -24,7 +23,8 @@ const Skills = () => {
     { name: 'Bootstrap', icon: FaBootstrap },
     { name: 'WordPress', icon: FaWordpress },
     { name: 'MySQL', icon: FaDatabase },
-    { name: 'Figma', icon: FaFigma }
+    { name: 'Figma', icon: FaFigma },
+    { name: 'Canva', icon: SiCanva }
   ];
 
   const softSkills = [
@@ -34,29 +34,7 @@ const Skills = () => {
     { name: 'Communication', progress: 85 }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      {
-        threshold: 0.3, 
-        rootMargin: '-50px'
-      }
-    );
 
-    if (skillsRef.current) {
-      observer.observe(skillsRef.current);
-    }
-
-    return () => {
-      if (skillsRef.current) {
-        observer.unobserve(skillsRef.current);
-      }
-    };
-  }, []);
 
   return (
     <section id="skills" className="min-h-screen py-24 px-4 bg-black flex items-center relative overflow-hidden">
@@ -223,7 +201,7 @@ const Skills = () => {
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Section Title */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Skills & Expertise
           </h2>
@@ -236,7 +214,7 @@ const Skills = () => {
         <div className="flex flex-col gap-12">
           {/* Technical Skills */}
           <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center">
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center" data-aos="fade-right" data-aos-delay="200">
               Technical Skills
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -246,6 +224,8 @@ const Skills = () => {
                   <div 
                     key={skill.name} 
                     className="bg-gray-900 border border-gray-700 py-6 px-3 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10 hover:border-white group cursor-pointer select-none"
+                    data-aos="zoom-in"
+                    data-aos-delay={300 + (index * 100)}
                     onClick={() => {
                       console.log(`Clicked on ${skill.name}`);
                     }}
@@ -263,13 +243,18 @@ const Skills = () => {
           </div>
           
           {/* Soft Skills */}
-          <div ref={skillsRef}>
-            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center">
+          <div>
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-8 text-center" data-aos="fade-left" data-aos-delay="200">
               Soft Skills
             </h3>
-            <div className="bg-gray-900 border border-gray-700 p-6 sm:p-8 md:p-10 hover:shadow-2xl hover:shadow-white/10 transition-shadow duration-300">
+            <div className="bg-gray-900 border border-gray-700 p-6 sm:p-8 md:p-10 hover:shadow-2xl hover:shadow-white/10 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="400">
               {softSkills.map((skill, index) => (
-                <div key={skill.name} className="mb-8 last:mb-0">
+                <div 
+                  key={skill.name} 
+                  className="mb-8 last:mb-0"
+                  data-aos="slide-right"
+                  data-aos-delay={600 + (index * 150)}
+                >
                   <div className="flex justify-between items-center mb-3">
                     <span className="text-sm sm:text-base font-medium text-white">
                       {skill.name}
@@ -280,11 +265,11 @@ const Skills = () => {
                   </div>
                   <div className="w-full h-3 bg-gray-800 border border-gray-600 overflow-hidden">
                     <div 
-                      className="h-full bg-gradient-to-r from-white to-gray-300 transition-all duration-1000 ease-out"
-                      style={{ 
-                        width: isVisible ? `${skill.progress}%` : '0%',
-                        transitionDelay: isVisible ? `${index * 200}ms` : '0ms'
-                      }}
+                      className="h-full bg-gradient-to-r from-white to-gray-300 transition-all duration-2000 ease-out"
+                      style={{ width: `${skill.progress}%` }}
+                      data-aos="slide-right"
+                      data-aos-delay={800 + (index * 150)}
+                      data-aos-duration="1500"
                     ></div>
                   </div>
                   <div className="mt-2 text-xs text-gray-500">

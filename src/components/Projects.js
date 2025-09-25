@@ -56,7 +56,7 @@ const Projects = () => {
     <section id="projects" className="min-h-screen py-24 px-4 bg-white flex items-center">
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-aos="fade-up">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Featured Projects
           </h2>
@@ -67,7 +67,7 @@ const Projects = () => {
         </div>
         
         {/* Single Project Display */}
-        <div className="bg-white border-2 border-gray-200 overflow-hidden hover:border-black transition-colors duration-300 shadow-lg">
+        <div className="bg-white border-2 border-gray-200 overflow-hidden hover:border-black transition-colors duration-300 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
           {/* Top Section: Project Name & Description */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Project Name (Top Left) */}
@@ -83,7 +83,10 @@ const Projects = () => {
             </div>
             
             {/* Project Description (Top Right) */}
-            <div className="p-4 sm:p-6 lg:p-8 flex items-center border-t lg:border-t-0 border-gray-200">
+            <div className="p-4 sm:p-6 lg:p-8 border-t lg:border-t-0 border-gray-200">
+              <h4 className="text-base sm:text-lg font-semibold text-black mb-3 lg:mb-4">
+                Project Description
+              </h4>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                 {currentProjectData.description}
               </p>
